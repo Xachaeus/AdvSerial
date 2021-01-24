@@ -1,2 +1,2 @@
 AdvSerial	KEYWORD1
-read	KEYWORD2
+Read	KEYWORD2
