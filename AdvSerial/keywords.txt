@@ -1,0 +1,2 @@
+AdvSerial	KEYWORD1
+read	KEYWORD2
