@@ -6,14 +6,14 @@
 class AdvSerial
 {
 public:
-  AdvSerial(char end_char='\n', int max_length=128);
+  AdvSerial(char end_char='\n');
   String Read();
+  String Background_Read();
   
   
   
 private:
   char _end_char;
-  int _max_length;
-  char* in_array;
+  String _backgroundString;
 };
 #endif
