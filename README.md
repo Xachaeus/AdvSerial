@@ -5,7 +5,7 @@ delimiter and will return it as an arduino String.
 
 To instantiate the AdvSerial object:
 
-	AdvSerial instance_name = AdvSerial(delimiter_char, maximum_length);
+	AdvSerial instance_name = AdvSerial(delimiter_char);
 
 Syntax:
 
@@ -13,10 +13,6 @@ Syntax:
 
 	delimiter_char : The char to determine the end of received serial messages.
                      By default, this char is Newline, or '\n'.
-	
-	maximum_length : The maximum amount of chars that can be sent in a single 
-	                 message. This value is 128 by default, but can be raised 
-			 or lowered depending on memory usage.
 
 To to wait and receive a full message from the Serial port:
 
