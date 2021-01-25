@@ -1,22 +1,31 @@
 #include <Arduino.h>
 #include "AdvSerial.h"
 
-AdvSerial::AdvSerial(char end_char='\n')
+AdvSerial::AdvSerial(char end_char, int max_length)
 {
   _end_char = end_char;
+  _max_length =max_length;
 }
 
 String AdvSerial::Read()
 {
   int length = 0;
   bool ended = false;
+  in_array = (char*) malloc(_max_length * sizeof(char));
+  if (in_array == NULL)
+  {
+    Serial.println("Not enough memory!");
+    return NULL;
+  }
+  
   
   while (not ended)
   {
     while (not Serial.available()){}
-		in_array[length] = Serial.read();
-		if(in_array[length] == _end_char) { ended = true; }
-		length++;
+    char in = Serial.read();
+    in_array[length] = in;
+    if(in == _end_char) { ended = true; }
+    length++;
   }
   String return_string;
   
@@ -28,5 +37,6 @@ String AdvSerial::Read()
       return_string += Char;
     }
   }
+  free(in_array);
   return return_string;
 }
