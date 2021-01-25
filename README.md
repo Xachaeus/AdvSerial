@@ -18,7 +18,7 @@ Syntax:
 	                 message. This value is 128 by default, but can be raised 
 			 or lowered depending on memory usage.
 
-To read a full message from the Serial port:
+To to wait and receive a full message from the Serial port:
 
 	String message = instance.Read();
 
@@ -29,3 +29,16 @@ Syntax:
 AdvSerial.Read() will return an arduino String object containing the received message. 
 Note that this function will stop the program until it receives the delimiter that was
 set.
+
+To wait and receive a full message without stopping the program:
+	
+	String message = instace.Background_Read();
+
+Syntax:
+
+	instance : An instance of AdvSerial() object.
+
+AdvSerial.Background_Read() will log all incoming serial data to a buffer and return
+the buffer as a string when it receives the delimiter. However, Background_Read() will
+return an empty string when called until it receives a full message, allowing your 
+program to continue running while it collects data in the background.
